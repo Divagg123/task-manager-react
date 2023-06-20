@@ -28,8 +28,7 @@ To start the development server, run:
 ## To-Do
 
 * Add a dark mode
-* Add the ability to add tasks to a calendar
-* Add the ability to collaborate on tasks with others
+* Modernise the UI
 
 ## Contributing
 
