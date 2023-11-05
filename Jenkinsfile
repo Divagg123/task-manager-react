@@ -6,8 +6,6 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/Aloneduckling/task-manager-react.git'
-                
-                sh 'git checkout main'
             }
         }
         stage('Install Dependencies'){
