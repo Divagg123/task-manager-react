@@ -2,28 +2,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone git') {
+        stage('Checkout') {
             steps {
-                // Get some code from a GitHub repository
-                git 'https://github.com/Aloneduckling/task-manager-react.git'
+                // Check out the code from your GitHub repository
+                checkout([$class: 'GitSCM', 
+                    branches: [[name: 'main']], 
+                    doGenerateSubmoduleConfigurations: false, 
+                    extensions: [], 
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [[url: 'https://github.com/Divagg123/task-manager-react.git']]
+                ])
             }
         }
-        stage('Install Dependencies'){
-            steps{
-                sh 'npm install'
+
+        stage('Deploy to Apache') {
+            steps {
+                // Copy the code to the Apache document root directory
+                bat script: '''
+                    xcopy /s /e /y "C:\\task-manager-react" "C:\\Apache24\\htdocs"
+                '''
             }
         }
-            
-        stage('Build'){
-            steps{
-                sh 'npm run build'
-            }
-        }
-        stage('Test'){
-            steps{
-                sh 'npm run test'
-            }
-        }
-    
     }
 }
