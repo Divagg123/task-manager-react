@@ -19,7 +19,7 @@ pipeline {
             steps {
                 // Copy the code to the Apache document root directory
                 bat script: '''
-                    xcopy /s /e /y "C:\\task-manager-react" "C:\\Apache24\\htdocs"
+                    xcopy /s /e /y "C:\\Users\\divya\\OneDrive\\Desktop\\clg" "C:\\Apache24\\htdocs"
                 '''
             }
         }
